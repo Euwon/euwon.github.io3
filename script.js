@@ -23,22 +23,22 @@ function finishedPosition() {
 
 function draw(e) {
     if (!painting) return;
-    
-    // Adjustment for canvas offset and device pixel ratio
+
     const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;    // Relationship bitmap vs. element for X
-    const scaleY = canvas.height / rect.height;  // Relationship bitmap vs. element for Y
+    // Assume dpr is already calculated as shown in previous steps
+    const dpr = window.devicePixelRatio || 1;
+    // Adjusted calculation for x and y coordinates
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width / dpr);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height / dpr);
 
-    const x = (e.clientX - rect.left) * scaleX;  // Scale mouse coordinates after they have
-    const y = (e.clientY - rect.top) * scaleY;   // been adjusted to be relative to element
-
-    ctx.lineWidth = 5; // Or whatever logic you use for setting this
+    ctx.lineWidth = 5; // Adjust as necessary
     ctx.lineCap = 'round';
     ctx.lineTo(x, y);
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(x, y);
 }
+
 
 canvas.addEventListener('pointerdown', startPosition);
 canvas.addEventListener('pointerup', finishedPosition);
