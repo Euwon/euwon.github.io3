@@ -17,7 +17,7 @@ function finishedPosition() {
 
 function draw(e) {
     if (!painting) return;
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 5; // You could modify this based on e.pressure if needed
     ctx.lineCap = 'round'; // Round line endings for a smoother look
     ctx.lineTo(e.clientX, e.clientY);
     ctx.stroke();
@@ -25,6 +25,6 @@ function draw(e) {
     ctx.moveTo(e.clientX, e.clientY);
 }
 
-canvas.addEventListener('mousedown', startPosition);
-canvas.addEventListener('mouseup', finishedPosition);
-canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('pointerdown', startPosition);
+canvas.addEventListener('pointerup', finishedPosition);
+canvas.addEventListener('pointermove', draw);
