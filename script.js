@@ -12,7 +12,6 @@ ctx.scale(dpr, dpr);
 let painting = false;
 
 function startPosition(e) {
-    e.preventDefault(); // Prevent any default action that might occur, like scrolling
     painting = true;
     canvas.setPointerCapture(e.pointerId); // Capture pointer events for this canvas
     ctx.beginPath(); // Begin a new path
@@ -26,7 +25,6 @@ function startPosition(e) {
 }
 
 function draw(e) {
-    e.preventDefault(); // Prevent any default action that might occur, like scrolling
     if (!painting) return;
 
     const rect = canvas.getBoundingClientRect();
@@ -46,7 +44,6 @@ function draw(e) {
 }
 
 function finishedPosition(e) {
-    e.preventDefault(); // Prevent any default action that might occur, like scrolling
     canvas.releasePointerCapture(e.pointerId); // Release pointer capture
     painting = false;
     ctx.beginPath(); // Prepare for a new path the next time the user draws
