@@ -21,6 +21,11 @@ function finishedPosition() {
     ctx.beginPath(); // Begin a new path to start drawing a new stroke
 }
 
+function finishedPosition() {
+    painting = false;
+    // Reset/clean up drawing state as needed
+}
+
 function draw(e) {
     if (!painting) return;
 
@@ -41,5 +46,6 @@ function draw(e) {
 
 
 canvas.addEventListener('pointerdown', startPosition);
-canvas.addEventListener('pointerup', finishedPosition);
 canvas.addEventListener('pointermove', draw);
+canvas.addEventListener('pointerup', finishedPosition);
+canvas.addEventListener('pointerleave', finishedPosition); // Optional, to handle the pen leaving the canvas
