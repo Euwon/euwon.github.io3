@@ -13,17 +13,14 @@ let painting = false;
 
 function startPosition(e) {
     painting = true;
+    ctx.beginPath(); // Begin a new path
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop); // Move to the starting point without drawing a line
     draw(e); // Draw immediately on click without moving mouse
 }
 
-function finishedPosition() {
-    painting = false;
-    ctx.beginPath(); // Begin a new path to start drawing a new stroke
-}
-
-function finishedPosition() {
-    painting = false;
-    // Reset/clean up drawing state as needed
+function startPosition(e) {
+    painting = true;
+    ctx.beginPath();
 }
 
 function draw(e) {
@@ -42,6 +39,11 @@ function draw(e) {
     ctx.stroke();
     ctx.beginPath();
     ctx.moveTo(x, y);
+}
+
+function finishedPosition() {
+    painting = false;
+    // Reset/clean up drawing state as needed
 }
 
 
