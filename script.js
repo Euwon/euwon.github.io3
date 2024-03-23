@@ -33,6 +33,10 @@ function draw(e) {
     const x = (e.clientX - rect.left) * (canvas.width / rect.width / dpr);
     const y = (e.clientY - rect.top) * (canvas.height / rect.height / dpr);
 
+    // Default line width for mouse, adjusted by pressure for pen
+    const baseLineWidth = 5; // Base line width
+    ctx.lineWidth = e.pointerType === 'pen' ? baseLineWidth * e.pressure : baseLineWidth;
+    
     ctx.lineWidth = 5; // Adjust as necessary
     ctx.lineCap = 'round';
     ctx.lineTo(x, y); // Draw a line to the new position
