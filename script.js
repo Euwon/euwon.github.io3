@@ -25,21 +25,9 @@ function startPosition(e) {
     ctx.moveTo(x, y); // Move to the starting point without drawing a line
 }
 
-let lastEventTime = Date.now();
-const debounceTime = 10; // Milliseconds
-
 function draw(e) {
     e.preventDefault(); // Prevent any default action that might occur, like scrolling
-    
-    // Debouncing
-    let now = Date.now();
-    if (now - lastEventTime < debounceTime) return;
-    lastEventTime = now;
-
-    // Checking for actual contact
-    if (!painting || (e.pressure === 0 && e.buttons === 0)) return;
-
-    // Your drawing logic here
+    if (!painting) return;
 
     const rect = canvas.getBoundingClientRect();
     const x = (e.clientX - rect.left) * (canvas.width / rect.width / dpr);
