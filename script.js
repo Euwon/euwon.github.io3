@@ -40,7 +40,7 @@ function draw(e) {
     ctx.moveTo(x, y); // Move to this position to start the next line
 }
 
-function finishedPosition() {
+function finishedPosition(e) {
     e.preventDefault(); // Prevent any default action that might occur, like scrolling
     painting = false;
     ctx.beginPath(); // Prepare for a new path the next time the user draws
