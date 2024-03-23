@@ -1,22 +1,9 @@
 const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
-const brushSizeSlider = document.getElementById('brushSize');
-const brushSizeNumber = document.getElementById('brushSizeNumber');
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let painting = false;
-let brushSize = 5; // Default brush size
-
-brushSizeSlider.addEventListener('input', updateBrushSize);
-brushSizeNumber.addEventListener('input', updateBrushSize);
-
-function updateBrushSize() {
-    brushSize = this.value;
-    brushSizeSlider.value = brushSize;
-    brushSizeNumber.value = brushSize;
-}
 
 function startPosition(e) {
     painting = true;
