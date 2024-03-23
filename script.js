@@ -26,6 +26,11 @@ function startPosition(e) {
 function draw(e) {
     if (!painting) return;
 
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop); // Draw a line to the new position
+    ctx.stroke(); // Render the line
+    ctx.beginPath(); // Begin a new path to avoid drawing from the last dot directly
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop); // Move to this position to start the next line
+
     const rect = canvas.getBoundingClientRect();
     // Assume dpr is already calculated as shown in previous steps
     const dpr = window.devicePixelRatio || 1;
