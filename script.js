@@ -34,6 +34,7 @@ function draw(e) {
     const y = (e.clientY - rect.top) * (canvas.height / rect.height / dpr);
 
     // Default line width for mouse, adjusted by pressure for pen
+    console.log('Pressure:', e.pressure);
     const baseLineWidth = 5; // Base line width
     ctx.lineWidth = e.pointerType === 'pen' ? baseLineWidth * e.pressure : baseLineWidth;
     
