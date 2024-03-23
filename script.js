@@ -23,12 +23,21 @@ function finishedPosition() {
 
 function draw(e) {
     if (!painting) return;
-    ctx.lineWidth = 5; // You could modify this based on e.pressure if needed
-    ctx.lineCap = 'round'; // Round line endings for a smoother look
-    ctx.lineTo(e.clientX, e.clientY);
+    
+    // Adjustment for canvas offset and device pixel ratio
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;    // Relationship bitmap vs. element for X
+    const scaleY = canvas.height / rect.height;  // Relationship bitmap vs. element for Y
+
+    const x = (e.clientX - rect.left) * scaleX;  // Scale mouse coordinates after they have
+    const y = (e.clientY - rect.top) * scaleY;   // been adjusted to be relative to element
+
+    ctx.lineWidth = 5; // Or whatever logic you use for setting this
+    ctx.lineCap = 'round';
+    ctx.lineTo(x, y);
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(e.clientX, e.clientY);
+    ctx.moveTo(x, y);
 }
 
 canvas.addEventListener('pointerdown', startPosition);
