@@ -1,13 +1,60 @@
-body, html {
-    overflow: hidden; /* Prevents scrolling on the page level */
-    height: 100%; /* Full height to accommodate fixed or absolute positioned elements */
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+  margin:0;
+  padding:0;
+}
+#colorButtonBox{
+  position:absolute;
+  background:rgb(210,210,210);
+  padding:5px;
+  margin:5px;
+  border-radius:10px;
+  bottom:0;
+}
+#colorButton {
+  transition: .1s linear;
+  position: relative;
+  float:left;
+  margin:5px;
+  border-radius:5px;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+}
+#eraserButton {
+  transition: .1s linear;
+  position: relative;
+  float:left;
+  margin:5px;
+  border-radius:50%;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  background:white;
+}
+#eraserButton:hover {
+  width:30px;
+  height:30px;
+  margin:10px;
+}
+#colorButton:hover {
+  transition: .1s linear;
+  width:45px;
+  height:45px;
+  margin:2.5px;
 }
 
-canvas {
-    border: 1px solid #000;
+.black {
+  background:black;
+}
+.blue {
+  background:blue;
+}
+.red {
+  background:red;
+}
+.green {
+  background:green;
+}
+.yellow {
+  background:yellow;
 }
